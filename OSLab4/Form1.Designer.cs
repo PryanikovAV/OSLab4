@@ -140,9 +140,13 @@
             // readerSpeedControl
             // 
             readerSpeedControl.Location = new Point(6, 109);
+            readerSpeedControl.Maximum = 5;
+            readerSpeedControl.Minimum = 1;
             readerSpeedControl.Name = "readerSpeedControl";
             readerSpeedControl.Size = new Size(188, 45);
             readerSpeedControl.TabIndex = 4;
+            readerSpeedControl.Value = 1;
+            readerSpeedControl.Scroll += readerSpeedControl_Scroll;
             // 
             // pauseReaderButton
             // 
@@ -211,9 +215,13 @@
             // writerSpeedControl
             // 
             writerSpeedControl.Location = new Point(6, 109);
+            writerSpeedControl.Maximum = 5;
+            writerSpeedControl.Minimum = 1;
             writerSpeedControl.Name = "writerSpeedControl";
             writerSpeedControl.Size = new Size(188, 45);
             writerSpeedControl.TabIndex = 5;
+            writerSpeedControl.Value = 1;
+            writerSpeedControl.Scroll += writerSpeedControl_Scroll;
             // 
             // pauseWriterButton
             // 

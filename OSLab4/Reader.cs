@@ -55,7 +55,10 @@ namespace OSLab4
             }).Start();
         }
 
-        public void SetSpeed(int newSpeed) => speed = newSpeed;
+        public void SetSpeed(int newSpeed)
+        {
+            speed = newSpeed;
+        }
 
         private void ReaderData()
         {
@@ -68,6 +71,11 @@ namespace OSLab4
                     {
                         updateReaderStatus($"Reader прочитал: {data}");
                         updateBufferStatus(data, "Прочитано");
+
+                        Thread.Sleep(500);
+
+                        updateBufferStatus(data, "Удалено");
+                        Thread.Sleep(100);
                     }
                     else
                     {

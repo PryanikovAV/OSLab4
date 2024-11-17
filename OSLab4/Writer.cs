@@ -78,8 +78,13 @@ namespace OSLab4
                     {
                         updateWriterStatus("Буфер полон, ожидание...");
                     }
+
+                    Thread.Sleep(speed);
                 }
-                Thread.Sleep(speed);
+                else
+                {
+                    Thread.Sleep(100);
+                }
             }
         }
     }

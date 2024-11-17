@@ -12,9 +12,6 @@ namespace OSLab4
 
             writer = new Writer(buffer, UpdateWriterStatus, UpdateBufferStatus);
             reader = new Reader(buffer, UpdateReaderStatus, UpdateBufferStatus);
-
-            writerSpeedControl.Scroll += (s, e) => writer.SetSpeed(writerSpeedControl.Value * 100);
-            readerSpeedControl.Scroll += (s, e) => reader.SetSpeed(readerSpeedControl.Value * 100);
         }
 
 
@@ -53,6 +50,10 @@ namespace OSLab4
             continueWriterButton.Enabled = false;
         }
 
+        private void writerSpeedControl_Scroll(object sender, EventArgs e)
+        {
+            writer.SetSpeed(writerSpeedControl.Value);
+        }
         // WRITER
 
 
@@ -91,7 +92,12 @@ namespace OSLab4
             continueReaderButton.Enabled = false;
         }
 
+        private void readerSpeedControl_Scroll(object sender, EventArgs e)
+        {
+            reader.SetSpeed(readerSpeedControl.Value);
+        }
         // READER
+
 
         // UPDATE
         private void UpdateWriterStatus(string status)
@@ -123,6 +129,8 @@ namespace OSLab4
                 bufferGridView.Rows[newIndex].DefaultCellStyle.BackColor = status == "Записано" ? System.Drawing.Color.LightGreen : System.Drawing.Color.LightGray;
             }));
         }
+
+
 
         private void startSimulationButton_Click(object sender, EventArgs e)
         {
