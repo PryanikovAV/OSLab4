@@ -8,15 +8,15 @@ namespace OSLab4
 {
     public class AppController
     {
-        private readonly SharedBuffer buffer;
-        private readonly WriterThread writer;
-        private readonly ReaderThread reader;
+        private readonly Buffer buffer;
+        private readonly Writer writer;
+        private readonly Reader reader;
 
         public AppController(DataGridView bufferGridView)
         {
-            buffer = new SharedBuffer(10, bufferGridView);
-            writer = new WriterThread(buffer);
-            reader = new ReaderThread(buffer);
+            buffer = new Buffer(10, bufferGridView);
+            writer = new Writer(buffer);
+            reader = new Reader(buffer);
         }
 
         public void StartWriter() => writer.Start();

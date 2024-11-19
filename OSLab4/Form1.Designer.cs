@@ -58,12 +58,13 @@
             // 
             bufferGridView.AllowUserToAddRows = false;
             bufferGridView.AllowUserToDeleteRows = false;
+            bufferGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             bufferGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             bufferGridView.Columns.AddRange(new DataGridViewColumn[] { Data, Status });
             bufferGridView.Location = new Point(12, 12);
             bufferGridView.Name = "bufferGridView";
             bufferGridView.ReadOnly = true;
-            bufferGridView.Size = new Size(251, 365);
+            bufferGridView.Size = new Size(300, 275);
             bufferGridView.TabIndex = 0;
             // 
             // Data
@@ -86,9 +87,9 @@
             ReaderGroupBox.Controls.Add(startReaderButton);
             ReaderGroupBox.Controls.Add(readerSpeedControl);
             ReaderGroupBox.Controls.Add(pauseReaderButton);
-            ReaderGroupBox.Location = new Point(289, 178);
+            ReaderGroupBox.Location = new Point(402, 168);
             ReaderGroupBox.Name = "ReaderGroupBox";
-            ReaderGroupBox.Size = new Size(200, 160);
+            ReaderGroupBox.Size = new Size(200, 150);
             ReaderGroupBox.TabIndex = 1;
             ReaderGroupBox.TabStop = false;
             ReaderGroupBox.Text = "Читатель";
@@ -104,7 +105,7 @@
             // 
             // continueReaderButton
             // 
-            continueReaderButton.Location = new Point(102, 80);
+            continueReaderButton.Location = new Point(102, 64);
             continueReaderButton.Name = "continueReaderButton";
             continueReaderButton.Size = new Size(90, 23);
             continueReaderButton.TabIndex = 11;
@@ -114,7 +115,7 @@
             // 
             // stopReaderButton
             // 
-            stopReaderButton.Location = new Point(102, 53);
+            stopReaderButton.Location = new Point(102, 37);
             stopReaderButton.Name = "stopReaderButton";
             stopReaderButton.Size = new Size(90, 23);
             stopReaderButton.TabIndex = 2;
@@ -124,7 +125,7 @@
             // 
             // startReaderButton
             // 
-            startReaderButton.Location = new Point(6, 53);
+            startReaderButton.Location = new Point(6, 37);
             startReaderButton.Name = "startReaderButton";
             startReaderButton.Size = new Size(90, 23);
             startReaderButton.TabIndex = 0;
@@ -134,7 +135,7 @@
             // 
             // readerSpeedControl
             // 
-            readerSpeedControl.Location = new Point(6, 109);
+            readerSpeedControl.Location = new Point(6, 93);
             readerSpeedControl.Name = "readerSpeedControl";
             readerSpeedControl.Size = new Size(188, 45);
             readerSpeedControl.TabIndex = 4;
@@ -143,7 +144,7 @@
             // 
             // pauseReaderButton
             // 
-            pauseReaderButton.Location = new Point(6, 80);
+            pauseReaderButton.Location = new Point(6, 64);
             pauseReaderButton.Name = "pauseReaderButton";
             pauseReaderButton.Size = new Size(90, 23);
             pauseReaderButton.TabIndex = 1;
@@ -159,9 +160,9 @@
             WriterGroupBox.Controls.Add(startWriterButton);
             WriterGroupBox.Controls.Add(writerSpeedControl);
             WriterGroupBox.Controls.Add(pauseWriterButton);
-            WriterGroupBox.Location = new Point(289, 12);
+            WriterGroupBox.Location = new Point(396, 12);
             WriterGroupBox.Name = "WriterGroupBox";
-            WriterGroupBox.Size = new Size(200, 160);
+            WriterGroupBox.Size = new Size(200, 150);
             WriterGroupBox.TabIndex = 2;
             WriterGroupBox.TabStop = false;
             WriterGroupBox.Text = "Писатель";
@@ -177,7 +178,7 @@
             // 
             // continueWriterButton
             // 
-            continueWriterButton.Location = new Point(102, 80);
+            continueWriterButton.Location = new Point(102, 66);
             continueWriterButton.Name = "continueWriterButton";
             continueWriterButton.Size = new Size(90, 23);
             continueWriterButton.TabIndex = 12;
@@ -187,7 +188,7 @@
             // 
             // stopWriterButton
             // 
-            stopWriterButton.Location = new Point(102, 51);
+            stopWriterButton.Location = new Point(102, 37);
             stopWriterButton.Name = "stopWriterButton";
             stopWriterButton.Size = new Size(90, 23);
             stopWriterButton.TabIndex = 2;
@@ -197,7 +198,7 @@
             // 
             // startWriterButton
             // 
-            startWriterButton.Location = new Point(6, 51);
+            startWriterButton.Location = new Point(6, 37);
             startWriterButton.Name = "startWriterButton";
             startWriterButton.Size = new Size(90, 23);
             startWriterButton.TabIndex = 0;
@@ -208,7 +209,7 @@
             // writerSpeedControl
             // 
             writerSpeedControl.LargeChange = 2;
-            writerSpeedControl.Location = new Point(6, 109);
+            writerSpeedControl.Location = new Point(6, 95);
             writerSpeedControl.Minimum = 1;
             writerSpeedControl.Name = "writerSpeedControl";
             writerSpeedControl.Size = new Size(188, 45);
@@ -218,7 +219,7 @@
             // 
             // pauseWriterButton
             // 
-            pauseWriterButton.Location = new Point(6, 80);
+            pauseWriterButton.Location = new Point(6, 66);
             pauseWriterButton.Name = "pauseWriterButton";
             pauseWriterButton.Size = new Size(90, 23);
             pauseWriterButton.TabIndex = 1;
@@ -228,7 +229,7 @@
             // 
             // resetButton
             // 
-            resetButton.Location = new Point(289, 354);
+            resetButton.Location = new Point(396, 324);
             resetButton.Name = "resetButton";
             resetButton.Size = new Size(75, 23);
             resetButton.TabIndex = 8;
@@ -240,13 +241,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(533, 388);
+            ClientSize = new Size(608, 358);
             Controls.Add(resetButton);
             Controls.Add(WriterGroupBox);
             Controls.Add(ReaderGroupBox);
             Controls.Add(bufferGridView);
             Name = "Form1";
-            Text = " ";
+            Text = " Синхронизация процессов и потоков";
             ((System.ComponentModel.ISupportInitialize)bufferGridView).EndInit();
             ReaderGroupBox.ResumeLayout(false);
             ReaderGroupBox.PerformLayout();

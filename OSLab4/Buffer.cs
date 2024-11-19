@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OSLab4
 {
-    internal class SharedBuffer
+    internal class Buffer
     {
         private readonly Queue<string> buffer;
         private readonly Semaphore empty;
@@ -14,7 +14,7 @@ namespace OSLab4
         private readonly Mutex bufferMutex;
         private readonly DataGridView bufferGridView;
 
-        public SharedBuffer(int bufferLength, DataGridView gridView)
+        public Buffer(int bufferLength, DataGridView gridView)
         {
             buffer = new Queue<string>(bufferLength);
             empty = new Semaphore(bufferLength, bufferLength);

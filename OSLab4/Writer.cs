@@ -1,20 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace OSLab4
 {
-    internal class ReaderThread
+    internal class Writer
     {
-        private Thread readerThread;
+        private Thread writerThread;
         private bool isPaused;
         private bool isRunning;
         private volatile int speed;  // <-- динамически изменяемая скорость
-        private readonly SharedBuffer buffer;
+        private readonly Buffer buffer;
 
-        public ReaderThread(SharedBuffer buffer)
+        public Writer(Buffer buffer)
         {
             this.buffer = buffer;
             isPaused = false;
@@ -24,12 +26,12 @@ namespace OSLab4
 
         public void Start()
         {
-            if (readerThread == null || !readerThread.IsAlive)
+            if (writerThread == null || !writerThread.IsAlive)
             {
                 isRunning = true;
-                readerThread = new Thread(Run);
-                readerThread.IsBackground = true;
-                readerThread.Start();
+                writerThread = new Thread(Run);
+                writerThread.IsBackground = true;
+                writerThread.Start();
             }
         }
 
@@ -40,16 +42,17 @@ namespace OSLab4
         public void Stop()
         {
             isRunning = false;
-            readerThread?.Join();  // <-- ждём завершения потока
+            writerThread?.Join();  // <-- ждём завершения потока
         }
-        
+
         private void Run()
         {
             while (isRunning)
             {
                 if (!isPaused)
                 {
-                    string data = buffer.RemoveData();
+                    string data = $"{DateTime.Now.Ticks}";  // <-- генератор случайных чисел
+                    buffer.AddData(data);
                     Thread.Sleep(speed);
                 }
             }

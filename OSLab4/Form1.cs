@@ -20,7 +20,7 @@ namespace OSLab4
         private void writerSpeedControl_Scroll(object sender, EventArgs e)
         {
             int speed = writerSpeedControl.Value * 100;
-            appController.SetWriterSpeed(speed);
+            appController.SetWriterSpeed(1000 - speed);
             writerSpeedLabel.Text = $"Скорость писателя: {speed} мс";
         }
 
@@ -32,7 +32,7 @@ namespace OSLab4
         private void readerSpeedControl_Scroll(object sender, EventArgs e)
         {
             int speed = readerSpeedControl.Value * 100;
-            appController.SetReaderSpeed(speed);
+            appController.SetReaderSpeed(1000 - speed);
             readerSpeedLabel.Text = $"Скорость читателя: {speed} мс";
         }
 
