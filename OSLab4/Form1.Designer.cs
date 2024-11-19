@@ -32,31 +32,26 @@
             Data = new DataGridViewTextBoxColumn();
             Status = new DataGridViewTextBoxColumn();
             ReaderGroupBox = new GroupBox();
+            readerSpeedLabel = new Label();
             continueReaderButton = new Button();
             stopReaderButton = new Button();
-            ReaderLabel = new Label();
             startReaderButton = new Button();
             readerSpeedControl = new TrackBar();
             pauseReaderButton = new Button();
             WriterGroupBox = new GroupBox();
+            writerSpeedLabel = new Label();
             continueWriterButton = new Button();
-            WriterLabel = new Label();
             stopWriterButton = new Button();
             startWriterButton = new Button();
             writerSpeedControl = new TrackBar();
             pauseWriterButton = new Button();
-            startSimulationButton = new Button();
-            stopSimulationButton = new Button();
-            resetButton = new Button();
-            systemTimeLabel = new Label();
-            groupBox1 = new GroupBox();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            resetButton = new Button();
             ((System.ComponentModel.ISupportInitialize)bufferGridView).BeginInit();
             ReaderGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)readerSpeedControl).BeginInit();
             WriterGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)writerSpeedControl).BeginInit();
-            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // bufferGridView
@@ -68,7 +63,7 @@
             bufferGridView.Location = new Point(12, 12);
             bufferGridView.Name = "bufferGridView";
             bufferGridView.ReadOnly = true;
-            bufferGridView.Size = new Size(251, 595);
+            bufferGridView.Size = new Size(251, 365);
             bufferGridView.TabIndex = 0;
             // 
             // Data
@@ -85,9 +80,9 @@
             // 
             // ReaderGroupBox
             // 
+            ReaderGroupBox.Controls.Add(readerSpeedLabel);
             ReaderGroupBox.Controls.Add(continueReaderButton);
             ReaderGroupBox.Controls.Add(stopReaderButton);
-            ReaderGroupBox.Controls.Add(ReaderLabel);
             ReaderGroupBox.Controls.Add(startReaderButton);
             ReaderGroupBox.Controls.Add(readerSpeedControl);
             ReaderGroupBox.Controls.Add(pauseReaderButton);
@@ -97,6 +92,15 @@
             ReaderGroupBox.TabIndex = 1;
             ReaderGroupBox.TabStop = false;
             ReaderGroupBox.Text = "Читатель";
+            // 
+            // readerSpeedLabel
+            // 
+            readerSpeedLabel.AutoSize = true;
+            readerSpeedLabel.Location = new Point(6, 19);
+            readerSpeedLabel.Name = "readerSpeedLabel";
+            readerSpeedLabel.Size = new Size(153, 15);
+            readerSpeedLabel.TabIndex = 12;
+            readerSpeedLabel.Text = "Скорость читателя: 500 мс";
             // 
             // continueReaderButton
             // 
@@ -118,15 +122,6 @@
             stopReaderButton.UseVisualStyleBackColor = true;
             stopReaderButton.Click += stopReaderButton_Click;
             // 
-            // ReaderLabel
-            // 
-            ReaderLabel.AutoSize = true;
-            ReaderLabel.Location = new Point(6, 19);
-            ReaderLabel.Name = "ReaderLabel";
-            ReaderLabel.Size = new Size(96, 15);
-            ReaderLabel.TabIndex = 10;
-            ReaderLabel.Text = "Статус Читателя";
-            // 
             // startReaderButton
             // 
             startReaderButton.Location = new Point(6, 53);
@@ -140,12 +135,10 @@
             // readerSpeedControl
             // 
             readerSpeedControl.Location = new Point(6, 109);
-            readerSpeedControl.Maximum = 5;
-            readerSpeedControl.Minimum = 1;
             readerSpeedControl.Name = "readerSpeedControl";
             readerSpeedControl.Size = new Size(188, 45);
             readerSpeedControl.TabIndex = 4;
-            readerSpeedControl.Value = 1;
+            readerSpeedControl.Value = 5;
             readerSpeedControl.Scroll += readerSpeedControl_Scroll;
             // 
             // pauseReaderButton
@@ -160,8 +153,8 @@
             // 
             // WriterGroupBox
             // 
+            WriterGroupBox.Controls.Add(writerSpeedLabel);
             WriterGroupBox.Controls.Add(continueWriterButton);
-            WriterGroupBox.Controls.Add(WriterLabel);
             WriterGroupBox.Controls.Add(stopWriterButton);
             WriterGroupBox.Controls.Add(startWriterButton);
             WriterGroupBox.Controls.Add(writerSpeedControl);
@@ -173,6 +166,15 @@
             WriterGroupBox.TabStop = false;
             WriterGroupBox.Text = "Писатель";
             // 
+            // writerSpeedLabel
+            // 
+            writerSpeedLabel.AutoSize = true;
+            writerSpeedLabel.Location = new Point(6, 19);
+            writerSpeedLabel.Name = "writerSpeedLabel";
+            writerSpeedLabel.Size = new Size(154, 15);
+            writerSpeedLabel.TabIndex = 13;
+            writerSpeedLabel.Text = "Скорость писателя: 500 мс";
+            // 
             // continueWriterButton
             // 
             continueWriterButton.Location = new Point(102, 80);
@@ -182,15 +184,6 @@
             continueWriterButton.Text = "Продолжить";
             continueWriterButton.UseVisualStyleBackColor = true;
             continueWriterButton.Click += continueWriterButton_Click;
-            // 
-            // WriterLabel
-            // 
-            WriterLabel.AutoSize = true;
-            WriterLabel.Location = new Point(6, 19);
-            WriterLabel.Name = "WriterLabel";
-            WriterLabel.Size = new Size(98, 15);
-            WriterLabel.TabIndex = 11;
-            WriterLabel.Text = "Статус Писателя";
             // 
             // stopWriterButton
             // 
@@ -214,13 +207,13 @@
             // 
             // writerSpeedControl
             // 
+            writerSpeedControl.LargeChange = 2;
             writerSpeedControl.Location = new Point(6, 109);
-            writerSpeedControl.Maximum = 5;
             writerSpeedControl.Minimum = 1;
             writerSpeedControl.Name = "writerSpeedControl";
             writerSpeedControl.Size = new Size(188, 45);
             writerSpeedControl.TabIndex = 5;
-            writerSpeedControl.Value = 1;
+            writerSpeedControl.Value = 5;
             writerSpeedControl.Scroll += writerSpeedControl_Scroll;
             // 
             // pauseWriterButton
@@ -233,29 +226,9 @@
             pauseWriterButton.UseVisualStyleBackColor = true;
             pauseWriterButton.Click += pauseWriterButton_Click;
             // 
-            // startSimulationButton
-            // 
-            startSimulationButton.Location = new Point(6, 51);
-            startSimulationButton.Name = "startSimulationButton";
-            startSimulationButton.Size = new Size(75, 23);
-            startSimulationButton.TabIndex = 6;
-            startSimulationButton.Text = "Старт";
-            startSimulationButton.UseVisualStyleBackColor = true;
-            startSimulationButton.Click += startSimulationButton_Click;
-            // 
-            // stopSimulationButton
-            // 
-            stopSimulationButton.Location = new Point(87, 51);
-            stopSimulationButton.Name = "stopSimulationButton";
-            stopSimulationButton.Size = new Size(75, 23);
-            stopSimulationButton.TabIndex = 7;
-            stopSimulationButton.Text = "Стоп";
-            stopSimulationButton.UseVisualStyleBackColor = true;
-            stopSimulationButton.Click += stopSimulationButton_Click;
-            // 
             // resetButton
             // 
-            resetButton.Location = new Point(168, 51);
+            resetButton.Location = new Point(289, 354);
             resetButton.Name = "resetButton";
             resetButton.Size = new Size(75, 23);
             resetButton.TabIndex = 8;
@@ -263,34 +236,12 @@
             resetButton.UseVisualStyleBackColor = true;
             resetButton.Click += resetButton_Click;
             // 
-            // systemTimeLabel
-            // 
-            systemTimeLabel.AutoSize = true;
-            systemTimeLabel.Location = new Point(6, 19);
-            systemTimeLabel.Name = "systemTimeLabel";
-            systemTimeLabel.Size = new Size(117, 15);
-            systemTimeLabel.TabIndex = 9;
-            systemTimeLabel.Text = "Системное время: 0";
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(startSimulationButton);
-            groupBox1.Controls.Add(systemTimeLabel);
-            groupBox1.Controls.Add(stopSimulationButton);
-            groupBox1.Controls.Add(resetButton);
-            groupBox1.Location = new Point(12, 613);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(251, 87);
-            groupBox1.TabIndex = 10;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Общие элементы управления";
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 717);
-            Controls.Add(groupBox1);
+            ClientSize = new Size(533, 388);
+            Controls.Add(resetButton);
             Controls.Add(WriterGroupBox);
             Controls.Add(ReaderGroupBox);
             Controls.Add(bufferGridView);
@@ -303,8 +254,6 @@
             WriterGroupBox.ResumeLayout(false);
             WriterGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)writerSpeedControl).EndInit();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -321,17 +270,13 @@
         private Button startWriterButton;
         private TrackBar readerSpeedControl;
         private TrackBar writerSpeedControl;
-        private Button startSimulationButton;
-        private Button stopSimulationButton;
-        private Button resetButton;
-        private Label systemTimeLabel;
-        private Label ReaderLabel;
-        private Label WriterLabel;
-        private GroupBox groupBox1;
         private DataGridViewTextBoxColumn Data;
         private DataGridViewTextBoxColumn Status;
         private Button continueReaderButton;
         private Button continueWriterButton;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Button resetButton;
+        private Label readerSpeedLabel;
+        private Label writerSpeedLabel;
     }
 }
